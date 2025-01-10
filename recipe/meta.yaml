@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/numthreads-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/numthreads-{{ version }}.tar.gz
   sha256: 60863221aa2bfefe8220f4d636899c00d2e54d7c482ca67db54fa29cd0246a7b
 
 build:
@@ -14,16 +14,16 @@ build:
     - numthreads = numthreads:main
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - setuptools >=42
     - wheel
     - pip
   run:
-    - python >=3.7
+    - python >={{ python_min }}
 
 test:
   imports:
@@ -33,6 +33,7 @@ test:
     - numthreads --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   summary: Ultra tiny and simple tool to set the number of threads for OpenBLAS, MKL, OMP, NumExpr, and Accelerate.
