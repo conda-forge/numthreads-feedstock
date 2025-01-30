@@ -1,5 +1,5 @@
 {% set name = "numthreads" %}
-{% set version = "0.4.0" %}
+{% set version = "0.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/numthreads-{{ version }}.tar.gz
-  sha256: 60863221aa2bfefe8220f4d636899c00d2e54d7c482ca67db54fa29cd0246a7b
+  sha256: 3b534ce014ac05d2bca396c92c6aed35a013d81b5341b7a7756673ca2ac83dcc
 
 build:
   entry_points:
     - numthreads = numthreads:main
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
